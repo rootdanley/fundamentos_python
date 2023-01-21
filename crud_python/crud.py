@@ -1,5 +1,6 @@
 #CRUD BÁSICO
 import mysql.connector
+from funcoes import *
 
 conexao = mysql.connector.connect(
     host='localhost',
@@ -11,49 +12,33 @@ conexao = mysql.connector.connect(
 
 cursor = conexao.cursor()
 
-opcao = input('Digite a opcao: INSERIR(I) | LEITURA(L) | ATUALIZAR(A) | DELETAR(D)').lower()
+resposta = 's'
+while resposta != 'n':
+    print('Digite a opcao:\n| INSERIR(I) \n| LEITURA(L) \n| ATUALIZAR(A) \n| DELETAR(D)')
+    opcao = input('Resposta: ').lower()
+    # CREATE
+    if opcao == 'i':
+        criar(cursor,conexao)
 
-if opcao == 'i':
-    criar()
+    #READ
+    elif opcao == 'l':
+        leitura(cursor, conexao)
 
+    #UPDATE
+    elif opcao == 'a':
+        atualizar(cursor, conexao)
 
-# CREATE
-def criar():
-    nome = input('Digite o nome do cliente: ')
-    sobrenome = input('Digite o sobrenome do cliente: ')
+    #DELETE
+    elif opcao == 'd':
+        deletar(cursor,conexao)
 
-    comando = f'INSERT INTO cliente (nome, sobrenome) VALUES ("{nome}", "{sobrenome}")'
-    cursor.execute(comando)
-    conexao.commit()
+    else:
+        print('Opcao Invalida')
 
-
-#READ
-# comando = f'SELECT * FROM cliente'
-# cursor.execute(comando)
-# resultado = cursor.fetchall()
-# print(resultado)
-
-# cursor.close()
-# conexao.close()
-
-#UPDATE
-# nome_novo = input('Digite o novo:')
-# nome_antigo = input('Digite o antigo:')
-
-# comando = f'UPDATE cliente SET nome = "{nome_novo}"  WHERE nome = "{nome_antigo}"'
-# cursor.execute(comando)
-# conexao.commit()
-
-# cursor.close()
-# conexao.close()
-
-#DELETE
-# nome = input('Digite o para exlcuir:')
+    resposta = input('Deseja continuar? [S] ou [N]').lower()
 
 
-# comando = f'DELETE FROM cliente WHERE nome = "{nome}"'
-# cursor.execute(comando)
-# conexao.commit()
 
-# cursor.close()
-# conexao.close()
+
+
+
