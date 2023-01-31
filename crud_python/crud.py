@@ -18,7 +18,7 @@ while resposta != 'n':
     opcao = input('Resposta: ').lower()
     # CREATE
     if opcao == 'i':
-        criar(cursor,conexao)
+        criar(cursor, conexao)
 
     #READ
     elif opcao == 'l':
@@ -30,12 +30,15 @@ while resposta != 'n':
 
     #DELETE
     elif opcao == 'd':
-        deletar(cursor,conexao)
+        deletar(cursor, conexao)
 
     else:
         print('Opcao Invalida')
 
     resposta = input('Deseja continuar? [S] ou [N]').lower()
+
+
+
 
 
 

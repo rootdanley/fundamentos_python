@@ -13,8 +13,8 @@ def leitura(cursor, conexao):
     resultado = cursor.fetchall()
     print(resultado)
 
-    cursor.close()
-    conexao.close()
+    # cursor.close()
+    # conexao.close()
 
 def atualizar(cursor, conexao):
     nome_novo = input('Digite o novo nome do filme:')
@@ -24,8 +24,8 @@ def atualizar(cursor, conexao):
     cursor.execute(comando)
     conexao.commit()
 
-    cursor.close()
-    conexao.close()
+    # cursor.close()
+    # conexao.close()
 
 def deletar(cursor, conexao):
     nome = input('Digite o nome do filme para excluir:')
@@ -34,6 +34,5 @@ def deletar(cursor, conexao):
     cursor.execute(comando)
     conexao.commit()
 
-    cursor.close()
-    conexao.close()
-
+    # cursor.close()
+    # conexao.close()
